@@ -1,0 +1,11 @@
+.env
+.venv
+.git
+data
+photo
+tests
+ImagesForCoding
+*.pdf
+__pycache__
+.pytest_cache
+review
