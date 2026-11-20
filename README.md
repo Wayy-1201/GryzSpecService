@@ -47,7 +47,7 @@ SQL-файл создаёт таблицы заявок и уведомлени�
 
 Количество завершённых заявок сайт получает из базы. Кнопка «Оформлено» в Telegram меняет статус заявки на completed. Тестовые заявки из локального запуска в Supabase не попадают.
 Публикация на Render Free
-В проекте уже есть Dockerfile и render.yaml. Создайте Render Blueprint из репозитория или настройте Web Service с Docker. Переменные окружения перечислены в .env.example. Для production задайте:
+В проекте уже есть Dockerfile и render.yaml. Создайте Render Blueprint из корня репозитория или настройте Web Service с Docker. Для Web Service оставьте Root Directory пустым, задайте Dockerfile Path как `./Dockerfile`, а Docker Build Context Directory как `.`. Не указывайте `content` в качестве Root Directory: это каталог с текстом политики конфиденциальности, а не корень приложения. Переменные окружения перечислены в .env.example. Для production задайте:
 - APP_ENV=production
 - PUBLIC_URL=https://ваш-сервис.onrender.com
 Файл .env не добавляется в Git и не попадает в Docker-образ.
