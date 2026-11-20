@@ -1,0 +1,65 @@
+services:
+  - type: web
+    name: gruzspecservice
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: WORKER_ENABLED
+        value: "true"
+      - key: PUBLIC_URL
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_KEY
+        sync: false
+      - key: SUPABASE_PHOTO_BUCKET
+        value: order-photos
+      - key: COMPANY_EMAIL
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
+      - key: TELEGRAM_WEBHOOK_SECRET
+        generateValue: true
+      - key: TELEGRAM_MANAGER_IDS
+        sync: false
+      - key: TELEGRAM_URL
+        sync: false
+      - key: MAX_URL
+        sync: false
+      - key: MAIL_TRANSPORT
+        value: resend
+      - key: RESEND_API_KEY
+        sync: false
+      - key: SMTP_FROM
+        sync: false
+      - key: MANAGER_EMAIL
+        sync: false
+      - key: COMPANY_PHONE
+        sync: false
+      - key: COMPANY_ADDRESS
+        sync: false
+      - key: COMPANY_LATITUDE
+        sync: false
+      - key: COMPANY_LONGITUDE
+        sync: false
+      - key: COMPANY_YEARS
+        sync: false
+      - key: YANDEX_MAPS_API_KEY
+        sync: false
+      - key: YANDEX_ROUTING_API_KEY
+        sync: false
+      - key: YANDEX_ORG_ID
+        sync: false
+      - key: DEEPSEEK_API_KEY
+        sync: false
+      - key: DEEPSEEK_MODEL
+        value: deepseek-chat
+      - key: MAX_PHOTOS
+        value: "5"
+      - key: MAX_UPLOAD_MB
+        value: "8"

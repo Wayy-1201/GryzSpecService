@@ -1,0 +1,10 @@
+{
+  "visit_base": 10000,
+  "included_km": 20,
+  "price_per_km": 80,
+  "road_factor": 1.3,
+  "individual_quote_after_km": 500,
+  "urgent_multiplier": 1.2,
+  "vehicle_multipliers": {"truck": 1, "trailer": 0.9, "special": 1.25, "bus": 1.1},
+  "service_prices": {"repair": 10000, "diagnostics": 3500, "electric": 5000, "help": 10000, "towing": 15000, "parts": null}
+}

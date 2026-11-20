@@ -1,0 +1,929 @@
+<!doctype html>
+<html lang="ru" data-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#d8131c">
+  <meta name="description" content="ГрузСпецСервис — ремонт грузового транспорта, помощь на дороге, эвакуация и обслуживание автопарков. Работаем круглосуточно.">
+
+  <title>ГрузСпецСервис — грузовой сервис 24/7</title>
+
+  <!-- Иконка сайта -->
+  <link rel="icon" href="/static/images/logo-color.png" type="image/svg+xml">
+
+  <!-- Предзагрузка основного шрифта -->
+  <link rel="preload" href="/static/fonts/Unbounded.ttf" as="font" type="font/ttf" crossorigin>
+
+  <!-- Основные стили -->
+  <link rel="stylesheet" href="/static/css/style.css">
+
+  <!-- Скрипты: boot.js выполняется сразу (например, применяет тему), app.js — основная логика -->
+  <script src="/static/js/boot.js"></script>
+  <script type="module" src="/static/js/app.js"></script>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       SVG-спрайт с иконками.
+       Используются через <svg><use href="#i-название"/></svg>
+       ============================================================ -->
+  <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <symbol id="i-arrow" viewBox="0 0 24 24">
+        <path d="M5 12h14m-6-6 6 6-6 6"/>
+      </symbol>
+
+      <symbol id="i-settings" viewBox="0 0 24 24">
+        <path d="M4 7h16M4 17h16"/>
+        <circle cx="9" cy="7" r="3"/>
+        <circle cx="15" cy="17" r="3"/>
+      </symbol>
+
+      <symbol id="i-person" viewBox="0 0 24 24">
+        <circle cx="12" cy="7" r="4"/>
+        <path d="M4 21v-2a8 8 0 0 1 16 0v2"/>
+      </symbol>
+
+      <symbol id="i-company" viewBox="0 0 24 24">
+        <path d="M3 21V8h18v13M8 8V3h8v5M1 21h22M8 12v2m8-2v2m-4 3v4"/>
+      </symbol>
+
+      <symbol id="i-grid" viewBox="0 0 24 24">
+        <rect x="3" y="3" width="7" height="7" rx="1"/>
+        <rect x="14" y="3" width="7" height="7" rx="1"/>
+        <rect x="3" y="14" width="7" height="7" rx="1"/>
+        <rect x="14" y="14" width="7" height="7" rx="1"/>
+      </symbol>
+
+      <symbol id="i-chat" viewBox="0 0 24 24">
+        <path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H7l-4 2 1.5-4.5A7.5 7.5 0 1 1 20 11.5Z"/>
+        <circle cx="8" cy="11.5" r="1" fill="currentColor" stroke="none"/>
+        <circle cx="12" cy="11.5" r="1" fill="currentColor" stroke="none"/>
+        <circle cx="16" cy="11.5" r="1" fill="currentColor" stroke="none"/>
+      </symbol>
+
+      <symbol id="i-phone" viewBox="0 0 24 24">
+        <path d="m5 3 4 4-2 3a17 17 0 0 0 7 7l3-2 4 4-2 3C10 23 1 14 2 5Z"/>
+      </symbol>
+
+      <symbol id="i-sun" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+      </symbol>
+
+      <symbol id="i-moon" viewBox="0 0 24 24">
+        <path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5 8.5 8.5 0 1 0 20.5 14.5Z"/>
+      </symbol>
+
+      <symbol id="i-pin" viewBox="0 0 24 24">
+        <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/>
+        <circle cx="12" cy="10" r="3"/>
+      </symbol>
+
+      <symbol id="i-wrench" viewBox="0 0 24 24">
+        <path d="M14 4a6 6 0 0 0-7 7l-5 5a3 3 0 0 0 4 4l5-5a6 6 0 0 0 8-8l-4 4-3-3 4-4Z"/>
+      </symbol>
+
+      <symbol id="i-activity" viewBox="0 0 24 24">
+        <path d="M2 12h5l3-8 4 16 3-8h5"/>
+      </symbol>
+
+      <symbol id="i-zap" viewBox="0 0 24 24">
+        <path d="m14 2-11 12h8l-1 8 11-12h-8Z"/>
+      </symbol>
+
+      <symbol id="i-truck" viewBox="0 0 24 24">
+        <path d="M2 5h13v12H2Zm13 5h4l3 4v3h-7"/>
+        <circle cx="6" cy="18" r="3"/>
+        <circle cx="18" cy="18" r="3"/>
+      </symbol>
+
+      <symbol id="i-move" viewBox="0 0 24 24">
+        <path d="M3 18h18M3 18V9m0 0 7-6 7 6m-7-6v10m7-4v4l4 3"/>
+        <circle cx="6" cy="20" r="2"/>
+        <circle cx="18" cy="20" r="2"/>
+      </symbol>
+
+      <symbol id="i-box" viewBox="0 0 24 24">
+        <path d="m12 2 10 5v10l-10 5-10-5V7Zm0 10v10M2 7l10 5 10-5M7 4.5l10 5"/>
+      </symbol>
+
+      <symbol id="i-close" viewBox="0 0 24 24">
+        <path d="m6 6 12 12M6 18 18 6"/>
+      </symbol>
+
+      <symbol id="i-plus" viewBox="0 0 24 24">
+        <path d="M12 5v14M5 12h14"/>
+      </symbol>
+
+      <symbol id="i-locate" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="7"/>
+        <circle cx="12" cy="12" r="2"/>
+        <path d="M12 1v4m0 14v4M1 12h4m14 0h4"/>
+      </symbol>
+
+      <symbol id="i-check" viewBox="0 0 24 24">
+        <path d="m4 12 5 5L20 6"/>
+      </symbol>
+
+      <symbol id="i-upload" viewBox="0 0 24 24">
+        <path d="M3 16v5h18v-5M12 17V3m-6 6 6-6 6 6"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- Ссылка для пропуска навигации (доступность) -->
+  <a class="skip-link" href="#main">К содержимому</a>
+
+
+  <!-- ============================================================
+       ШАПКА САЙТА
+       ============================================================ -->
+  <header class="header">
+
+    <!-- Логотип / название компании (клик — переход на главную) -->
+    <button class="wordmark" data-view="home" aria-label="ГрузСпецСервис — главная">
+      <img class="header-logo logo-color" src="/static/images/logo-color.png" alt="">
+      <img class="header-logo logo-white" src="/static/images/logo-white.png" alt="">
+      <span class="wordmark-text">ГРУЗ<span>СПЕЦ</span>СЕРВИС</span>
+    </button>
+
+    <!-- Инструменты отображения: тема и размер текста -->
+    <div class="header-tools" aria-label="Настройки отображения">
+      <button type="button" class="display-tool" data-theme-toggle title="Переключить тему" aria-label="Переключить тему">
+        <svg><use href="#i-moon"/></svg>
+      </button>
+      <button type="button" class="display-tool text-size-tool" data-text-size-toggle title="Увеличить текст" aria-label="Увеличить текст">
+        <span aria-hidden="true">A+</span>
+      </button>
+    </div>
+
+    <!-- Основная навигация (переключает «страницы» через data-view) -->
+    <nav class="navigation" aria-label="Основная навигация">
+      <button data-view="personal">
+        <svg><use href="#i-person"/></svg>
+        <span>Личная заявка</span>
+      </button>
+
+      <button data-view="corporate">
+        <svg><use href="#i-company"/></svg>
+        <span class="desktop-label">Корпоративная заявка</span>
+        <span class="mobile-label">Для бизнеса</span>
+      </button>
+
+      <button data-view="services">
+        <svg><use href="#i-grid"/></svg>
+        <span>Услуги</span>
+      </button>
+
+      <!-- Открывает окно чата с консультантом -->
+      <button data-chat class="chat-nav" aria-label="Чат с консультантом">
+        <img src="/static/images/Chat-icon.png" alt="">
+        <span>Чат</span>
+      </button>
+    </nav>
+  </header>
+
+
+  <!-- ============================================================
+       ОСНОВНОЕ СОДЕРЖИМОЕ
+       Каждая <section class="view"> — отдельная «страница».
+       Показывается только одна, остальные скрыты атрибутом hidden.
+       ============================================================ -->
+  <main id="main" tabindex="-1">
+
+    <!-- ----------------------------------------------------------
+         СТРАНИЦА: ГЛАВНАЯ
+         ---------------------------------------------------------- -->
+    <section class="view home" data-page="home" aria-labelledby="home-title">
+
+      <!-- Главный экран (hero) -->
+      <div class="hero">
+        <div class="hero-copy">
+          <h1 id="home-title">
+            Большой<br>
+            технике -<br>
+            <span>свой сервис</span>
+          </h1>
+
+          <p style="z-index: 2;" class="hero-description">
+            Ремонтируем на СТО, помогаем в дороге и обслуживаем автопарки
+          </p>
+
+          <div class="hero-actions">
+            <button class="button primary" data-view="personal">
+              Подать заявку
+              <svg><use href="#i-arrow"/></svg>
+            </button>
+            <button class="button outline" data-service="help">Выезд на помощь</button>
+          </div>
+        </div>
+
+        <!-- Картинка с котом-механиком -->
+        <div class="hero-visual">
+          <img src="/static/images/cat-mascot.png" alt="Кот-механик рядом с грузовиком" fetchpriority="high">
+        </div>
+      </div>
+
+      <!-- Быстрые ссылки на направления сервиса -->
+      <div class="quick-services" aria-label="Направления сервиса">
+        <button data-service="repair">
+          <span class="index">01</span>
+          <svg><use href="#i-wrench"/></svg>
+          <span>Ремонт и СТО</span>
+          <svg class="end-arrow"><use href="#i-arrow"/></svg>
+        </button>
+
+        <button data-service="electric">
+          <span class="index">02</span>
+          <svg><use href="#i-zap"/></svg>
+          <span>Автоэлектрик</span>
+          <svg class="end-arrow"><use href="#i-arrow"/></svg>
+        </button>
+
+        <button data-service="towing">
+          <span class="index">03</span>
+          <svg><use href="#i-move"/></svg>
+          <span>Эвакуация</span>
+          <svg class="end-arrow"><use href="#i-arrow"/></svg>
+        </button>
+
+        <button data-service="parts">
+          <span class="index">04</span>
+          <svg><use href="#i-box"/></svg>
+          <span>Запчасти</span>
+          <svg class="end-arrow"><use href="#i-arrow"/></svg>
+        </button>
+      </div>
+
+      <!-- Галерея «до и после».
+           Фотографии продублированы (вторая четвёрка скрыта от скринридеров) —
+           это нужно для бесшовной бесконечной прокрутки. -->
+      <section class="work-gallery" aria-labelledby="work-gallery-title">
+        <h2 style="text-align: center;" id="work-gallery-title">Наши работы</h2>
+
+        <div class="work-gallery-window" tabindex="0" aria-label="Фотографии работ до и после ремонта; листайте влево или вправо">
+          <div class="work-gallery-track">
+
+            <!-- Основной набор -->
+            <img src="/static/imgs_do_posle/photo_1_2026-11-19_20-25-41.jpg" alt="Грузовик Volvo до и после ремонта" loading="lazy">
+            <img src="/static/imgs_do_posle/photo_2_2026-11-19_20-25-41.jpg" alt="Спецтехника до и после ремонта" loading="lazy">
+            <img src="/static/imgs_do_posle/photo_3_2026-11-19_20-25-41.jpg" alt="Рама грузовика до и после восстановления" loading="lazy">
+            <img src="/static/imgs_do_posle/photo_4_2026-11-19_20-25-41.jpg" alt="Автомобиль до и после кузовного ремонта" loading="lazy">
+
+            <!-- Дубликаты для зацикливания -->
+            <img src="/static/imgs_do_posle/photo_1_2026-11-19_20-25-41.jpg" alt="" aria-hidden="true" loading="lazy">
+            <img src="/static/imgs_do_posle/photo_2_2026-11-19_20-25-41.jpg" alt="" aria-hidden="true" loading="lazy">
+            <img src="/static/imgs_do_posle/photo_3_2026-11-19_20-25-41.jpg" alt="" aria-hidden="true" loading="lazy">
+            <img src="/static/imgs_do_posle/photo_4_2026-11-19_20-25-41.jpg" alt="" aria-hidden="true" loading="lazy">
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Нижний блок главной: адрес/карта и отзывы -->
+      <div class="home-lower">
+
+        <!-- Адрес и карта (заполняются скриптом) -->
+        <section class="location-panel" aria-label="Адрес сервиса">
+          <div class="location-topline">
+            <p class="location-address" data-contact="address">Адрес сервиса уточняется</p>
+          </div>
+          <div id="company-map" class="company-map map-placeholder">
+            <span>Расположение сервиса появится здесь</span>
+          </div>
+        </section>
+
+        <!-- Отзывы из Яндекс Карт (заполняются скриптом) -->
+        <section id="reviews-title" class="reviews-panel" aria-label="Отзывы клиентов">
+          <div class="reviews-topline">
+            <span class="yandex-sign">Я<span>ндекс</span></span>
+          </div>
+          <div id="reviews-content" class="reviews-content">
+            <p>Отзывы организации появятся после подключения Яндекс Карт.</p>
+            <span class="muted">Только настоящие отзывы клиентов.</span>
+          </div>
+        </section>
+
+      </div>
+    </section>
+
+
+    <!-- ----------------------------------------------------------
+         СТРАНИЦА: ЛИЧНАЯ ЗАЯВКА
+         ---------------------------------------------------------- -->
+    <section class="view" data-page="personal" hidden aria-labelledby="personal-title">
+
+      <div class="page-heading">
+        <p class="eyebrow">ОДИН АВТОМОБИЛЬ — ОДНО РЕШЕНИЕ</p>
+        <h1 id="personal-title">Личная заявка<span class="red"></span></h1>
+        <p>
+          Расскажите, что случилось. Заявку на СТО подтвердит менеджер.
+          Для выездной помощи свяжитесь с диспетчером после отправки.
+        </p>
+      </div>
+
+      <!-- Выбор услуги (кнопки добавляются скриптом) -->
+      <div class="service-picker" id="service-picker" role="group" aria-label="Выберите услугу"></div>
+
+      <div class="form-layout">
+
+        <!-- Форма личной заявки -->
+        <form id="personal-form" class="order-form" novalidate>
+
+          <!-- Шаг 1: транспорт и описание задачи -->
+          <fieldset>
+            <legend><span>01</span> Ваш транспорт</legend>
+
+            <div class="fields three">
+              <label>
+                Тип транспорта
+                <select name="vehicle_type">
+                  <option value="truck">Грузовой автомобиль</option>
+                  <option value="trailer">Прицеп / полуприцеп</option>
+                  <option value="special">Спецтехника</option>
+                  <option value="bus">Автобус</option>
+                </select>
+              </label>
+
+              <label>
+                Марка <b>*</b>
+                <input name="brand" placeholder="Например, КАМАЗ" maxlength="100" required autocomplete="off">
+              </label>
+
+              <label>
+                Модель
+                <input name="model" placeholder="Например, 5490" maxlength="100">
+              </label>
+            </div>
+
+            <label>
+              Что нужно сделать? <b>*</b>
+              <textarea name="description" rows="3" minlength="5" maxlength="3000" required
+                        placeholder="Опишите неисправность или задачу. Для запчастей — деталь, артикул или VIN."></textarea>
+            </label>
+          </fieldset>
+
+          <!-- Шаг 2: местоположение (нужно только при выезде) -->
+          <fieldset>
+            <legend><span>02</span> Где нужна помощь (пропустите, если приедите сами)</legend>
+
+            <div class="toggle-row">
+              <label class="check">
+                <input name="visit" type="checkbox">
+                <span>Нужен выезд к автомобилю</span>
+              </label>
+              <label class="check">
+                <input name="urgent" type="checkbox">
+                <span>Срочно</span>
+              </label>
+            </div>
+
+            <!-- Поля адреса показываются, когда отмечен «Нужен выезд» -->
+            <div id="location-fields" hidden>
+              <label>
+                Адрес или ориентир
+                <input name="address" maxlength="500" placeholder="Город, трасса, километр, направление">
+              </label>
+
+              <!-- Инструменты работы с картой -->
+              <div class="map-tools">
+                <button type="button" id="locate" class="text-link">
+                  <svg><use href="#i-locate"/></svg> Моё местоположение
+                </button>
+                <button type="button" id="find-address" class="text-link">Найти адрес</button>
+                <button type="button" id="show-map" class="text-link">Выбрать на карте</button>
+              </div>
+
+              <!-- Карта для выбора точки -->
+              <div id="selection-map" class="selection-map" hidden></div>
+
+              <!-- Координаты (заполняются автоматически или вручную) -->
+              <div class="fields two coordinates">
+                <label>
+                  Широта
+                  <input name="latitude" type="number" min="-90" max="90" step="any" placeholder="55.751244">
+                </label>
+                <label>
+                  Долгота
+                  <input name="longitude" type="number" min="-180" max="180" step="any" placeholder="37.618423">
+                </label>
+              </div>
+
+              <p class="field-hint" id="map-status" role="status">
+                Достаточно адреса или координат. Геолокация — по вашему желанию.
+              </p>
+            </div>
+          </fieldset>
+
+          <!-- Шаг 3: контактные данные -->
+          <fieldset>
+            <legend><span>03</span> Как с вами связаться</legend>
+
+            <div class="fields two">
+              <label>
+                Ваше имя <b>*</b>
+                <input name="name" autocomplete="name" minlength="2" maxlength="100" required placeholder="Как к вам обращаться">
+              </label>
+
+              <label>
+                Телефон <b>*</b>
+                <input name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="+7 (___) ___-__-__">
+              </label>
+            </div>
+
+            <label>
+              Email
+              <input name="email" type="email" autocomplete="email" placeholder="Необязательно">
+            </label>
+
+            <label>
+              Дополнительный комментарий
+              <textarea name="comments" rows="2" maxlength="1500" placeholder="Удобное время звонка или важные детали"></textarea>
+            </label>
+          </fieldset>
+
+          <!-- Шаг 4: фотографии (необязательно) -->
+          <fieldset class="photo-field">
+            <legend><span>04</span> Фото проблемы <small>необязательно</small></legend>
+
+            <label class="upload-zone">
+              <svg><use href="#i-upload"/></svg>
+              <span>
+                <strong>Добавить фотографии</strong>
+                <small>JPG, PNG, WebP · до 5 файлов по 8 МБ</small>
+              </span>
+              <input name="photos" type="file" accept="image/jpeg,image/png,image/webp" multiple>
+            </label>
+
+            <!-- Сюда скрипт добавляет миниатюры выбранных фото -->
+            <div class="photo-previews"></div>
+
+            <p class="field-hint">После доставки заявки менеджеру фотографии удаляются из временного хранилища.</p>
+          </fieldset>
+
+          <!-- Honeypot: скрытое поле-ловушка для спам-ботов (человек его не заполняет) -->
+          <label class="honeypot" aria-hidden="true">
+            Сайт
+            <input name="website" tabindex="-1" autocomplete="off">
+          </label>
+
+          <!-- Согласие на обработку персональных данных -->
+          <label class="check consent">
+            <input name="consent" type="checkbox" required>
+            <span>
+              Согласен на обработку персональных данных согласно
+              <button type="button" data-privacy>политике конфиденциальности</button>
+              <b>*</b>
+            </span>
+          </label>
+
+          <!-- Сообщение об ошибке валидации -->
+          <p class="form-error" role="alert" hidden></p>
+
+          <button style="width: 100%;" type="submit" class="button primary submit-button">
+            Отправить заявку
+            <svg><use href="#i-arrow"/></svg>
+          </button>
+
+          <p class="field-hint">Поля со звёздочкой обязательны. Стоимость и перечень работ согласуем до ремонта.</p>
+        </form>
+
+        <!-- Боковая панель: предварительный расчёт стоимости -->
+        <aside class="estimate-panel" aria-label="Предварительный расчёт">
+          <details class="estimate-disclosure" open>
+
+            <!-- Краткая строка (видна в свёрнутом виде) -->
+            <summary>
+              <span>Предварительно <strong id="estimate-compact">Считаем…</strong></span>
+              <svg><use href="#i-plus"/></svg>
+            </summary>
+
+            <div class="estimate-body">
+              <div class="section-line">
+                <p class="eyebrow">ПРЕДВАРИТЕЛЬНЫЙ РАСЧЁТ</p>
+                <svg><use href="#i-activity"/></svg>
+              </div>
+
+              <h2 id="estimate-title">Понятный ориентир.</h2>
+              <p id="estimate-service">Ремонт на СТО</p>
+
+              <!-- Итоговая сумма (обновляется скриптом) -->
+              <div class="estimate-total" id="estimate-total" aria-live="polite">Считаем…</div>
+
+              <!-- Детали расчёта -->
+              <dl class="estimate-details">
+                <div>
+                  <dt>Работы</dt>
+                  <dd id="estimate-work">—</dd>
+                </div>
+                <div>
+                  <dt>Выезд</dt>
+                  <dd id="estimate-travel">—</dd>
+                </div>
+                <div>
+                  <dt>Расстояние от СТО</dt>
+                  <dd id="estimate-distance">—</dd>
+                </div>
+              </dl>
+
+              <p id="estimate-note" class="field-hint">Точная цена — после диагностики и согласования.</p>
+
+              <!-- Пояснение, как считается выезд -->
+              <details class="price-explainer">
+                <summary>Как считается выезд</summary>
+                <p>
+                  Базовый выезд включает первые 20 км. Далее — тариф за километр от центра сервиса.
+                  Тип транспорта и срочность влияют на итог. Для дальних маршрутов согласуем индивидуальные условия.
+                </p>
+                <p>
+                  Если дорожный маршрут недоступен, показываем оценку по прямой с поправкой.
+                  Это ориентир, а не предложение фиксированной цены.
+                </p>
+              </details>
+
+              <!-- Блок срочной помощи -->
+              <div class="estimate-help">
+                <svg><use href="#i-phone"/></svg>
+                <div>
+                  <strong>Нужна помощь прямо сейчас?</strong>
+                  <a data-phone>Телефон диспетчера уточняется</a>
+                </div>
+              </div>
+            </div>
+          </details>
+        </aside>
+
+      </div>
+    </section>
+
+
+    <!-- ----------------------------------------------------------
+         СТРАНИЦА: КОРПОРАТИВНАЯ ЗАЯВКА
+         ---------------------------------------------------------- -->
+    <section class="view" data-page="corporate" hidden aria-labelledby="corporate-title">
+
+      <div class="page-heading">
+        <p class="eyebrow">СЕРВИС ДЛЯ ВАШЕГО БИЗНЕСА</p>
+        <h1 id="corporate-title">Обслуживание Автопарка<span class="red"></span></h1>
+        <p>
+          Регулярное обслуживание, ремонт и помощь на маршруте.
+          Соберём предложение под состав и задачи вашего автопарка
+        </p>
+      </div>
+
+      <div class="form-layout">
+
+        <!-- Форма корпоративной заявки -->
+        <form id="corporate-form" class="order-form" novalidate>
+
+          <!-- Шаг 1: данные о компании -->
+          <fieldset>
+            <legend><span>01</span> О компании</legend>
+
+            <div class="fields two">
+              <label>
+                Название компании <b>*</b>
+                <input name="company" autocomplete="organization" maxlength="200" required placeholder="ООО «Ваша компания»">
+              </label>
+
+              <label>
+                ИНН
+                <input name="inn" inputmode="numeric" pattern="(?:\d{10}|\d{12})" maxlength="12" placeholder="10 или 12 цифр">
+              </label>
+            </div>
+
+            <div class="fields two">
+              <label>
+                Количество автомобилей <b>*</b>
+                <input name="fleet_size" type="number" min="1" max="100000" required placeholder="Например, 12">
+              </label>
+
+              <label>
+                Тип транспорта
+                <select name="vehicle_type">
+                  <option value="truck">Грузовой автопарк</option>
+                  <option value="trailer">Прицепы / полуприцепы</option>
+                  <option value="special">Спецтехника</option>
+                  <option value="bus">Автобусы</option>
+                </select>
+              </label>
+            </div>
+
+            <label>
+              Задача для сервиса <b>*</b>
+              <textarea name="description" rows="5" required minlength="5" maxlength="3000"
+                        placeholder="Марки техники, виды работ, регулярность обслуживания, география маршрутов"></textarea>
+            </label>
+          </fieldset>
+
+          <!-- Шаг 2: контактное лицо -->
+          <fieldset>
+            <legend><span>02</span> Контактное лицо</legend>
+
+            <div class="fields two">
+              <label>
+                Ваше имя <b>*</b>
+                <input name="name" autocomplete="name" required minlength="2" maxlength="100" placeholder="Имя представителя">
+              </label>
+
+              <label>
+                Телефон <b>*</b>
+                <input name="phone" type="tel" autocomplete="tel" required placeholder="+7 (___) ___-__-__">
+              </label>
+            </div>
+
+            <label>
+              Рабочий email <b>*</b>
+              <input name="email" type="email" autocomplete="email" required placeholder="Для предложения по обслуживанию">
+            </label>
+
+            <label>
+              Комментарий
+              <textarea name="comments" rows="2" maxlength="1500" placeholder="Когда и как удобнее связаться"></textarea>
+            </label>
+          </fieldset>
+
+          <!-- Honeypot: скрытое поле-ловушка для спам-ботов -->
+          <label class="honeypot" aria-hidden="true">
+            Сайт
+            <input name="website" tabindex="-1" autocomplete="off">
+          </label>
+
+          <!-- Согласие на обработку персональных данных -->
+          <label class="check consent">
+            <input name="consent" type="checkbox" required>
+            <span>
+              Согласен на обработку персональных данных согласно
+              <button type="button" data-privacy>политике конфиденциальности</button>
+              <b>*</b>
+            </span>
+          </label>
+
+          <p class="form-error" role="alert" hidden></p>
+
+          <button class="button primary submit-button" type="submit">
+            Обсудить обслуживание
+            <svg><use href="#i-arrow"/></svg>
+          </button>
+        </form>
+
+        <!-- Боковая панель с описанием процесса -->
+        <aside class="corporate-aside">
+          <span class="big-number"></span>
+          <h2>Техника работает.<br>Бизнес движется.</h2>
+          <p>Оставьте одну заявку на весь автопарк — менеджер уточнит потребности и согласует условия.</p>
+
+          <ol>
+            <li><span>01</span> Обсудим задачи</li>
+            <li><span>02</span> Предложим порядок работ</li>
+            <li><span>03</span> Согласуем стоимость</li>
+          </ol>
+
+          <div class="aside-note">
+            Стоимость рассчитывается индивидуально — по составу автопарка и объёму обслуживания.
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+
+    <!-- ----------------------------------------------------------
+         СТРАНИЦА: УСЛУГИ
+         ---------------------------------------------------------- -->
+    <section class="view" data-page="services" hidden aria-labelledby="services-title">
+
+      <div class="page-heading">
+        <p class="eyebrow">ОДИН СЕРВИС — РАЗНЫЕ ЗАДАЧИ</p>
+        <h1 id="services-title">Держим в движении<span class="red"></span></h1>
+        <p>Грузовики, прицепы, автобусы и спецтехника. Выберите направление - подскажем следующий шаг</p>
+      </div>
+
+      <!-- Карточки услуг (добавляются скриптом) -->
+      <div id="services-grid" class="services-grid"></div>
+
+      <!-- Баннер для корпоративных клиентов -->
+      <div class="fleet-banner">
+        <div>
+          <p class="eyebrow">ДЛЯ КОМПАНИЙ</p>
+          <h2>Когда техники больше одной</h2>
+          <p>Обсудим обслуживание всего автопарка</p>
+        </div>
+        <button class="button primary" data-view="corporate">
+          Корпоративная заявка
+          <svg><use href="#i-arrow"/></svg>
+        </button>
+      </div>
+    </section>
+
+
+    <!-- ----------------------------------------------------------
+         СТРАНИЦА: НАСТРОЙКИ
+         ---------------------------------------------------------- -->
+    <section class="view" data-page="settings" hidden aria-labelledby="settings-title">
+
+      <div class="page-heading">
+        <p class="eyebrow">ВАШ КОМФОРТ</p>
+        <h1 id="settings-title">Настроим под вас<span class="red"></span></h1>
+        <p>Выберите тему и сохраните контакты сервиса</p>
+      </div>
+
+      <div class="settings-grid">
+
+        <!-- Выбор темы оформления -->
+        <section class="settings-section">
+          <h2>Оформление</h2>
+          <p class="muted">Выбор сохраняется на этом устройстве</p>
+
+          <div class="theme-options" role="group" aria-label="Тема оформления">
+            <button data-theme-choice="light">
+              <span class="theme-sample light-sample"><i></i><i></i></span>
+              Светлая
+              <svg><use href="#i-check"/></svg>
+            </button>
+
+            <button data-theme-choice="dark">
+              <span class="theme-sample dark-sample"><i></i><i></i></span>
+              Тёмная
+              <svg><use href="#i-check"/></svg>
+            </button>
+
+            <button data-theme-choice="night">
+              <span class="theme-sample night-sample"><i></i><i></i></span>
+              Ночная
+              <svg><use href="#i-check"/></svg>
+            </button>
+          </div>
+        </section>
+
+        <!-- Контакты компании -->
+        <section class="settings-section">
+          <h2>На связи 24/7</h2>
+
+          <div class="settings-contacts">
+            <a data-phone>Телефон уточняется</a>
+            <p data-contact="address">Адрес сервиса уточняется</p>
+            <a data-email hidden></a>
+          </div>
+
+          <!-- Мессенджеры с QR-кодами (заполняются скриптом) -->
+          <div class="messengers">
+            <div data-messenger="telegram">
+              <strong>Telegram</strong>
+              <img alt="QR-код Telegram компании" width="120" height="120" hidden>
+              <a target="_blank" rel="noopener" hidden>Открыть Telegram ↗</a>
+              <small>Контакт появится здесь</small>
+            </div>
+
+            <div data-messenger="max">
+              <strong>MAX</strong>
+              <img alt="QR-код MAX компании" width="120" height="120" hidden>
+              <a target="_blank" rel="noopener" hidden>Открыть MAX ↗</a>
+              <small>Контакт появится здесь</small>
+            </div>
+          </div>
+        </section>
+
+        <!-- Конфиденциальность -->
+        <section class="settings-section settings-privacy">
+          <div>
+            <h2>Ваши данные</h2>
+            <p class="muted">Заявки используются для связи и оказания услуг. История чата не сохраняется после закрытия</p>
+          </div>
+          <button class="button outline" data-privacy>Политика конфиденциальности</button>
+        </section>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       ПОДВАЛ САЙТА
+       ============================================================ -->
+  <footer class="footer">
+
+    <div class="footer-brand-block">
+      <span class="footer-brand">ООО «ГРУЗСПЕЦСЕРВИС»</span>
+    </div>
+
+    <div class="footer-columns">
+
+      <!-- Колонка: ссылки для клиентов -->
+      <div class="footer-column">
+        <strong>Клиентам</strong>
+        <button class="footer-link" data-view="personal">Личная заявка</button>
+        <button class="footer-link" data-view="corporate">Корпоративным клиентам</button>
+      </div>
+
+      <!-- Колонка: контакты -->
+      <div class="footer-column footer-contacts">
+        <strong>Контакты</strong>
+        <a class="footer-link" data-phone>+7 (___) ___-__-__</a>
+        <a class="footer-link" data-email hidden></a>
+        <span class="footer-link footer-years" data-years hidden></span>
+
+        <div class="footer-socials">
+          <a class="footer-social" data-footer-messenger="telegram" target="_blank" rel="noopener" hidden>Telegram</a>
+          <a class="footer-social" data-footer-messenger="max" target="_blank" rel="noopener" hidden>MAX</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Нижняя строка подвала -->
+    <div class="footer-bottom">
+      <button class="footer-link" data-privacy>Политика конфиденциальности</button>
+      <span>© <span style="margin-right: 40px;" id="year">2026</span></span>
+    </div>
+  </footer>
+
+  <!-- Плавающая кнопка звонка (ссылка и показ задаются скриптом) -->
+  <a class="floating-call" data-call href="tel:" hidden>
+    <svg><use href="#i-phone"/></svg>
+  </a>
+
+  <!-- Всплывающее уведомление (toast) -->
+  <div class="toast" role="status" hidden></div>
+
+
+  <!-- ============================================================
+       ДИАЛОГОВЫЕ ОКНА
+       ============================================================ -->
+
+  <!-- Чат с ИИ-консультантом -->
+  <dialog id="chat-dialog" class="chat-dialog" aria-labelledby="chat-title">
+    <div class="sheet-handle" aria-hidden="true"></div>
+
+    <header class="chat-header">
+      <div class="cat-avatar">
+        <img src="/static/images/cat.webp" alt="" width="64" height="80">
+      </div>
+      <div>
+        <h2 id="chat-title">Кот-Тимофей на связи</h2>
+        <p>Консультант по услугам сервиса</p>
+      </div>
+      <button class="icon-button" data-close-chat aria-label="Закрыть чат">
+        <svg><use href="#i-close"/></svg>
+      </button>
+    </header>
+
+    <!-- Лента сообщений (заполняется скриптом) -->
+    <div id="chat-messages" class="chat-messages" role="log" aria-live="polite"></div>
+
+    <!-- Поле ввода сообщения -->
+    <form id="chat-form" class="chat-compose">
+      <label class="sr-only" for="chat-input">Ваш вопрос</label>
+      <input id="chat-input" placeholder="Что подсказать?" maxlength="2000" autocomplete="off" required>
+      <button class="circle-button" aria-label="Отправить вопрос">
+        <svg><use href="#i-arrow"/></svg>
+      </button>
+    </form>
+
+    <p class="chat-disclaimer">ИИ-консультант может ошибаться. Стоимость и условия уточнит менеджер</p>
+  </dialog>
+
+  <!-- Политика конфиденциальности (текст подставляется скриптом) -->
+  <dialog id="privacy-dialog" class="content-dialog" aria-labelledby="privacy-title">
+    <div class="dialog-title">
+      <h2 id="privacy-title">Политика конфиденциальности</h2>
+      <button class="icon-button" data-close-dialog aria-label="Закрыть">
+        <svg><use href="#i-close"/></svg>
+      </button>
+    </div>
+    <div id="privacy-text" class="privacy-text"></div>
+  </dialog>
+
+  <!-- Окно успешной отправки заявки -->
+  <dialog id="success-dialog" class="content-dialog success-dialog" aria-labelledby="success-title">
+    <button class="icon-button success-close" data-close-dialog aria-label="Закрыть">
+      <svg><use href="#i-close"/></svg>
+    </button>
+
+    <div class="success-mark">
+      <svg><use href="#i-check"/></svg>
+    </div>
+
+    <p class="eyebrow">ЗАЯВКА СОХРАНЕНА</p>
+    <h2 id="success-title">Принято в работу.</h2>
+    <p id="success-message"></p>
+    <p class="order-reference">Номер заявки <strong id="success-id"></strong></p>
+
+    <a class="button primary" id="success-call" hidden>
+      <svg><use href="#i-phone"/></svg>
+      Позвонить диспетчеру
+    </a>
+    <button class="button outline" data-close-dialog>Понятно</button>
+  </dialog>
+
+  <!-- Сообщение для пользователей с отключённым JavaScript -->
+  <noscript>
+    <div class="noscript">Для формы заявки включите JavaScript. Контактный телефон указан внизу страницы</div>
+  </noscript>
+
+</body>
+</html>
