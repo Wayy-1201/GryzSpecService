@@ -222,7 +222,10 @@ export function fillContacts(config) {
 
 		if (footerLink) {
 			footerLink.href = url;
-			footerLink.hidden = false;
+			footerLink.target = '_blank';
+			footerLink.rel = 'noopener';
+			footerLink.title = `Открыть ${channel === 'max' ? 'MAX' : 'Telegram'}`;
+			footerLink.removeAttribute('aria-disabled');
 		}
 	}
 }

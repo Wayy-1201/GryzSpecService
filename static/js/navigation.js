@@ -43,6 +43,13 @@ export function initNavigation() {
 	document.querySelectorAll('[data-view]').forEach(button => {
 		button.addEventListener('click', () => {
 			navigate(button.dataset.view);
+
+			if (button.dataset.scrollTarget) {
+				document.getElementById(button.dataset.scrollTarget)?.scrollIntoView({
+					behavior: 'smooth',
+					block: 'start',
+				});
+			}
 		});
 	});
 
